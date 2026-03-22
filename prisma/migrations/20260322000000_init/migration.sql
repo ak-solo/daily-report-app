@@ -9,7 +9,7 @@ CREATE TABLE "users" (
     "id" UUID NOT NULL,
     "name" VARCHAR(50) NOT NULL,
     "email" VARCHAR(255) NOT NULL,
-    "password" TEXT NOT NULL,
+    "password" VARCHAR(60) NOT NULL,
     "role" "Role" NOT NULL,
     "manager_id" UUID,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -59,7 +59,22 @@ CREATE TABLE "visit_records" (
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
+CREATE INDEX "users_manager_id_idx" ON "users"("manager_id");
+
+-- CreateIndex
+CREATE INDEX "customers_assigned_user_id_idx" ON "customers"("assigned_user_id");
+
+-- CreateIndex
+CREATE INDEX "daily_reports_report_date_idx" ON "daily_reports"("report_date");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "daily_reports_user_id_report_date_key" ON "daily_reports"("user_id", "report_date");
+
+-- CreateIndex
+CREATE INDEX "visit_records_report_id_idx" ON "visit_records"("report_id");
+
+-- CreateIndex
+CREATE INDEX "visit_records_customer_id_idx" ON "visit_records"("customer_id");
 
 -- AddForeignKey
 ALTER TABLE "users" ADD CONSTRAINT "users_manager_id_fkey" FOREIGN KEY ("manager_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
