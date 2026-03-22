@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@prisma/client": "^7.5.0",
+    "jose": "^6.2.2",
     "next": "^15.2.3",
     "prisma": "^7.5.0",
     "react": "^19.0.0",
