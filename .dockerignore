@@ -1,0 +1,35 @@
+# Version control
+.git
+.gitignore
+
+# Dependencies (reinstalled in Docker)
+node_modules
+
+# Next.js build output
+.next
+
+# Environment files — never bake secrets into the image
+.env
+.env.*
+!.env.example
+
+# Development and test artifacts
+coverage
+*.log
+
+# Editor and OS artifacts
+.DS_Store
+.vscode
+*.swp
+*.swo
+
+# Local Prisma migration lockfile (schema.prisma is copied explicitly)
+prisma/migrations
+
+# CI/CD and documentation
+.github
+README.md
+doc
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo
